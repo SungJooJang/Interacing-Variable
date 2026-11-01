@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Interacing Variable</title>
+	<style>
+		@font-face {
+    font-family: "26EPI-100PPI";
+    src: url("./font/26EPI-100PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "26EPI-60PPI";
+    src: url("./font/26EPI-60PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "26EPI-30PPI";
+    src: url("./font/26EPI-30PPI.otf") format("opentype");
+}
+		
+		@font-face {
+    font-family: "13EPI-100PPI";
+    src: url("./font/13EPI-100PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "13EPI-60PPI";
+    src: url("./font/13EPI-60PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "13EPI-30PPI";
+    src: url("./font/13EPI-30PPI.otf") format("opentype");
+}
+		
+
+		@font-face {
+    font-family: "7EPI-100PPI";
+    src: url("./font/7EPI-100PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "7EPI-60PPI";
+    src: url("./font/7EPI-60PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "7EPI-30PPI";
+    src: url("./font/7EPI-30PPI.otf") format("opentype");
+}
+
+		@font-face {
+    font-family: "5EPI-100PPI";
+    src: url("./font/5EPI-100PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "5EPI-60PPI";
+    src: url("./font/5EPI-60PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "5EPI-30PPI";
+    src: url("./font/5EPI-30PPI.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "3EPI-100PPI";
+    src: url("./font/3EPI-100PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "3EPI-60PPI";
+    src: url("./font/3EPI-60PPI.otf") format("opentype");
+}
+		@font-face {
+    font-family: "3EPI-30PPI";
+    src: url("./font/3EPI-30PPI.otf") format("opentype");
+}
+
+		html{height: 100%; font-family: ; background-color: #ffffff; }
+		body{margin: 0;
+		min-height: 100vh;
+		overflow: hidden;
+		}
+
+		nav{position: absolute;
+	  	left: 3%;
+	  	top: 4%;}
+
+		.title{font-size: 34px;
+		position: absolute;
+	  	left: 3%;
+	  	top: 30px;}
+		.license{font-size: 16px;
+		text-align: right;
+		position: absolute;
+	  	right: 3%;
+	  	top: 36px;}
+		
+		.textbox-wrapper{
+	position:absolute;
+	top:54%;
+	left:50%;
+	transform:translate(-50%,-50%);
+
+	width:58%;
+	height:50%;
+}
+
+		.textbox{
+	width:100%;
+	height:100%;
+	padding-right:12px;
+
+	padding: 0;
+
+	font-family: 26EPI-100PPI;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 1.25;
+	letter-spacing: 0;
+
+	color: #000;
+	background: transparent;
+	border: none;
+	outline: none /*1px solid black*/;
+
+	text-align: left;
+	white-space: pre-wrap;
+	word-break: break-word;
+	overflow-wrap: break-word;
+
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	scrollbar-width:none;
+	-ms-overflow-style:none;
+
+}
+
+.textbox::-webkit-scrollbar{
+	display: none;
+}
+
+.scrollbar{
+	position:absolute;
+	top:0;
+	right:0;
+
+	width:6px;
+	height:100%;
+	pointer-events:none;
+
+	opacity:0;
+	transition:.2s;
+}
+
+.textbox-wrapper:hover .scrollbar{
+	opacity:1;
+}
+
+.thumb{
+	position:absolute;
+	top:0;
+	left:0;
+
+	width:100%;
+	height:20px;
+
+	background:#000;
+}
+
+
+.textbox:empty:before{
+	content: "Every woven surface begins with the relationship between warp and weft. Their repeated intersections establish structure, while variations in density influence texture, flexibility, and visual rhythm. In this project, the repetitive structure of Plain Weave, the most fundamental weaving method, was interpreted as a grid system and expanded into the fundamental principle for typeface generation. Interacing Variable reinterprets this textile system as a typeface, translating EPI, PPI, and thread count into typographic variables. Rather than changing the fundamental construction of each letter, the family explores how density alone can transform appearance, creating a collection of styles that share one structure while expressing different woven conditions.";
+	color: #000000;
+	pointer-events: none;
+}
+		.textbox-title{}
+		.textbox-E{}
+		.textbox-P{}
+		.textbox-scroll-E{}
+	</style>
+</head>
+<body>
+	
+	<div class="textbox-wrapper">
+	<div class="textbox" contenteditable="true" spellcheck="false"></div>
+
+	<div class="scrollbar">
+		<div class="thumb"></div>
+	</div>
+</div>
+
+
+<script>
+const textbox = document.querySelector(".textbox");
+const scrollbar = document.querySelector(".scrollbar");
+const thumb = document.querySelector(".thumb");
+
+function updateScrollbar() {
+
+    const visibleHeight = textbox.clientHeight;
+    const contentHeight = textbox.scrollHeight;
+
+    // 내용이 넘치지 않으면 커스텀 스크롤바 숨김
+    if (contentHeight <= visibleHeight) {
+        scrollbar.style.opacity = "0";
+        return;
+    }
+
+    // thumb 높이 계산
+    const thumbHeight = Math.max(
+        (visibleHeight / contentHeight) * visibleHeight * 0.2,
+    30
+    );
+
+    thumb.style.height = thumbHeight + "px";
+
+    // thumb 위치 계산
+    const maxThumbMove = visibleHeight - thumbHeight;
+    const maxScroll = contentHeight - visibleHeight;
+
+    thumb.style.top =
+        (textbox.scrollTop / maxScroll) * maxThumbMove + "px";
+}
+
+// 스크롤할 때
+textbox.addEventListener("scroll", updateScrollbar);
+
+// 입력할 때
+textbox.addEventListener("input", updateScrollbar);
+
+// 창 크기 변경
+window.addEventListener("resize", updateScrollbar);
+
+// 처음 로드
+window.addEventListener("load", updateScrollbar);
+
+// hover 시 나타남
+document.querySelector(".textbox-wrapper").addEventListener("mouseenter", () => {
+    if (textbox.scrollHeight > textbox.clientHeight) {
+        scrollbar.style.opacity = "1";
+    }
+});
+
+// hover 해제 시 사라짐
+document.querySelector(".textbox-wrapper").addEventListener("mouseleave", () => {
+    scrollbar.style.opacity = "0";
+});
+</script>
+
+</body>
+</html>
