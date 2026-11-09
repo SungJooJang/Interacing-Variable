@@ -18,6 +18,7 @@
     src: url("./26EPI-30PPI.otf") format("opentype");
 }
 		
+
 		@font-face {
     font-family: "13EPI-100PPI";
     src: url("./13EPI-100PPI.otf") format("opentype");
@@ -45,6 +46,7 @@
     src: url("./7EPI-30PPI.otf") format("opentype");
 }
 
+
 		@font-face {
     font-family: "5EPI-100PPI";
     src: url("./5EPI-100PPI.otf") format("opentype");
@@ -57,6 +59,7 @@
     font-family: "5EPI-30PPI";
     src: url("./5EPI-30PPI.otf") format("opentype");
 }
+
 
 @font-face {
     font-family: "3EPI-100PPI";
@@ -71,177 +74,793 @@
     src: url("./3EPI-30PPI.otf") format("opentype");
 }
 
-		html{height: 100%; font-family: "26EPI-100PPI"; background-color: #ffffff; }
-		body{margin: 0;
-		min-height: 100vh;
-		overflow: hidden;
-		}
 
-		nav{position: absolute;
-	  	left: 3%;
-	  	top: 4%;}
+		html{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#fff;
+}
+		body{
+    margin:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+}
 
-		.title{font-size: 34px;
-		position: absolute;
-	  	left: 3%;
-	  	top: 30px;}
-		.license{font-size: 16px;
-		text-align: right;
-		position: absolute;
-	  	right: 3%;
-	  	top: 36px;}
+
+		.title{
+
+    position:absolute;
+
+    left:3%;
+    top:0%;
+
+    transform:translateY(100%) rotate(90deg);
+    transform-origin:left top;
+
+    font-family:"26EPI-100PPI";
+
+    font-size:20pt;
+    font-weight:400;
+
+    line-height:1;
+
+    white-space:nowrap;
+
+    user-select:none;
+
+}
+
+.line{ left:4%; top:0; 
+
+position:absolute;
+
+    width:2px;
+    height:100vh;
+	background-color: #000;}
+
+.line-1{ left:96%; top:0; 
+
+position:absolute;
+
+    width:2px;
+    height:100vh;
+	background-color: #000;}
+
+.line-2{ left:92%; top:0; 
+
+position:absolute;
+
+    width:2px;
+    height:100vh;
+	background-color: #000;}
+
+.line-3{ left:88%; top:0; 
+
+position:absolute;
+
+    width:2px;
+    height:100vh;
+	background-color: #000;}
+
+.line-4{ left:84%; top:0; 
+
+position:absolute;
+
+    width:2px;
+    height:100vh;
+	background-color: #000;}
+
+.line-5{ left:80%; top:0; 
+
+position:absolute;
+
+    width:2px;
+    height:100vh;
+	background-color: #000;}
+
 		
-		.textbox-wrapper{
-	position:absolute;
-	top:54%;
-	left:50%;
-	transform:translate(-50%,-50%);
+.textbox-wrapper{
 
-	width:58%;
-	height:50%;
-}
+    position:relative;
 
-		.textbox{
-	width:100%;
-	height:100%;
-	padding-right:12px;
+    top:50%;
+    left:42%;
 
-	padding: 0;
+    width:56%;
+    height:88%;
 
-	font-family: "26EPI-100PPI";
-	font-size: 32px;
-	font-weight: 500;
-	line-height: 1.25;
-	letter-spacing: 0;
+    transform:translateX(-50%) translateY(-50%);
 
-	color: #000;
-	background: transparent;
-	border: none;
-	outline: none /*1px solid black*/;
-
-	text-align: left;
-	white-space: pre-wrap;
-	word-break: break-word;
-	overflow-wrap: break-word;
-
-	overflow-y: auto;
-	overflow-x: hidden;
-
-	scrollbar-width:none;
-	-ms-overflow-style:none;
+    overflow:hidden;
 
 }
+
+.textbox{
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+
+    white-space:pre-wrap;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+
+    box-sizing:border-box;
+
+    outline:none;
+	border:none;
+
+	text-align: center;
+
+}
+
+.textbox:focus{
+
+    outline:none;
+
+}
+
+#hiddenInput{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    border:none;
+    outline:none;
+    resize:none;
+
+    background:transparent;
+
+    color:transparent;
+
+    caret-color:black;
+
+    font:inherit;
+
+    overflow:hidden;
+
+    white-space:pre-wrap;
+
+    z-index:20;
+
+}
+
 
 .textbox::-webkit-scrollbar{
-	display: none;
+    display:none;
 }
+
+
 
 .scrollbar{
-	position:absolute;
-	top:0;
-	right:0;
 
-	width:6px;
-	height:100%;
-	pointer-events:none;
+    position:absolute;
 
-	opacity:0;
-	transition:.2s;
+    top:0;
+    right:0;
+
+    width:6px;
+    height:100%;
+
+    opacity:0;
+
+    transition:.2s;
+
 }
 
-.textbox-wrapper:hover .scrollbar{
-	opacity:1;
+
+.scroll-thumb{
+
+    position:absolute;
+
+    width:100%;
+    height:80px;
+
+    background:#000;
+
 }
+
+/*====================================
+    CUSTOM SLIDER
+====================================*/
+
+.slider{
+
+    position:absolute;
+
+    top:0;
+
+    width:2px;
+    height:100vh;
+
+}
+
+/* 위치 */
+
+.slider-epi{ left:80%; }
+
+.slider-ppi{ left:84%; }
+
+.slider-size{ left:88%; }
+
+.slider-tracking{ left:92%; }
+
+.slider-leading{ left:96%; }
+
+
+/*====================================
+    TRACK
+====================================*/
+
+.track{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:2px;
+
+    background:#000;
+
+}
+
+
+/*====================================
+    THUMB
+====================================*/
 
 .thumb{
-	position:absolute;
-	top:0;
-	left:0;
 
-	width:100%;
-	height:20px;
+    position:absolute;
 
-	background:#000;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:20px;
+    height:16px;
+
+    background:#FFFFFF;
+
+    cursor:pointer;
+
+    z-index:10;
+
 }
 
 
-.textbox:empty:before{
-	content: "Every woven surface begins with the relationship between warp and weft. Their repeated intersections establish structure, while variations in density influence texture, flexibility, and visual rhythm. In this project, the repetitive structure of Plain Weave, the most fundamental weaving method, was interpreted as a grid system and expanded into the fundamental principle for typeface generation. Interacing Variable reinterprets this textile system as a typeface, translating EPI, PPI, and thread count into typographic variables. Rather than changing the fundamental construction of each letter, the family explores how density alone can transform appearance, creating a collection of styles that share one structure while expressing different woven conditions.";
-	color: #000000;
-	pointer-events: none;
+/*====================================
+    LABEL
+====================================*/
+
+.slider span{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%) rotate(-90deg);
+
+    transform-origin:center;
+
+    font-size:12px;
+
+    white-space:nowrap;
+
 }
-		.textbox-title{}
-		.textbox-E{}
-		.textbox-P{}
-		.textbox-scroll-E{}
+
+
+/*====================================
+    CUSTOM PROPERTY
+====================================*/
+
+.slider{
+
+    --track-top:7.5%;
+    --track-height:85%;
+
+}
+
+.track{
+
+    top:var(--track-top);
+
+    height:var(--track-height);
+
+}
+
+.slider span{
+
+    top:calc(var(--track-top) - 40px);
+
+}
+
+
 	</style>
 </head>
-<body>
-	
-	<div class="textbox-wrapper">
-	<div class="textbox" contenteditable="true" spellcheck="false"></div>
 
-	<div class="scrollbar">
-		<div class="thumb"></div>
-	</div>
+<body>
+
+    <!-- Title -->
+    <div class="title">
+        Interacing Variable
+    </div>
+
+    <!-- Line -->
+    <div class="line"></div>
+    <div class="line-1"></div>
+    <div class="line-2"></div>
+    <div class="line-3"></div>
+    <div class="line-4"></div>
+    <div class="line-5"></div>
+
+    <!-- =======================
+         EPI
+    ======================== -->
+    <div class="slider slider-epi" id="epi">
+
+        <!-- <span>EPI</span>-->
+
+        <div class="track"></div>
+
+        <div class="thumb"></div>
+
+    </div>
+
+
+    <!-- =======================
+         PPI
+    ======================== -->
+    <div class="slider slider-ppi" id="ppi">
+
+        <!-- <span>PPI</span>-->
+
+        <div class="track"></div>
+
+        <div class="thumb"></div>
+
+    </div>
+
+
+    <!-- =======================
+         FONT SIZE
+    ======================== -->
+    <div class="slider slider-size" id="size">
+
+        <!-- <span>SIZE</span>-->
+
+        <div class="track"></div>
+
+        <div class="thumb"></div>
+
+    </div>
+
+
+    <!-- =======================
+         LETTER SPACING
+    ======================== -->
+    <div class="slider slider-tracking" id="tracking">
+
+        <!-- <span>TRACKING</span>-->
+
+        <div class="track"></div>
+
+        <div class="thumb"></div>
+
+    </div>
+
+
+    <!-- =======================
+         LINE HEIGHT
+    ======================== -->
+    <div class="slider slider-leading" id="leading">
+
+        <!-- <span>LEADING</span>-->
+
+        <div class="track"></div>
+
+        <div class="thumb"></div>
+
+    </div>
+
+
+    <!-- =======================
+         TEXT
+    ======================== -->
+
+ <div class="textbox-wrapper">
+
+    <div
+    class="textbox"
+    contenteditable="true"
+    spellcheck="false">Weave your type</div>
+
 </div>
 
 
 <script>
-const textbox = document.querySelector(".textbox");
-const scrollbar = document.querySelector(".scrollbar");
-const thumb = document.querySelector(".thumb");
+	/*==================================================
+    CUSTOM SLIDER ENGINE
+==================================================*/
 
-function updateScrollbar() {
+class CustomSlider{
 
-    const visibleHeight = textbox.clientHeight;
-    const contentHeight = textbox.scrollHeight;
+    constructor(id){
 
-    // 내용이 넘치지 않으면 커스텀 스크롤바 숨김
-    if (contentHeight <= visibleHeight) {
-        scrollbar.style.opacity = "0";
-        return;
+        this.el=document.getElementById(id);
+
+        this.track=this.el.querySelector(".track");
+        this.thumb=this.el.querySelector(".thumb");
+
+        this.dragging=false;
+        this.value=1;
+
+        this.readCSS();
+        this.updateThumb();
+        this.bind();
+
     }
 
-    // thumb 높이 계산
-    const thumbHeight = Math.max(
-        (visibleHeight / contentHeight) * visibleHeight * 0.2,
-    30
-    );
+    readCSS(){
 
-    thumb.style.height = thumbHeight + "px";
+        const css=getComputedStyle(this.el);
 
-    // thumb 위치 계산
-    const maxThumbMove = visibleHeight - thumbHeight;
-    const maxScroll = contentHeight - visibleHeight;
+        this.start=parseFloat(
+            css.getPropertyValue("--track-top")
+        );
 
-    thumb.style.top =
-        (textbox.scrollTop / maxScroll) * maxThumbMove + "px";
+        this.length=parseFloat(
+            css.getPropertyValue("--track-height")
+        );
+
+        this.end=this.start+this.length;
+
+    }
+
+    bind(){
+
+        this.thumb.addEventListener("mousedown",(e)=>{
+
+            e.preventDefault();
+
+            this.dragging=true;
+
+        });
+
+        this.track.addEventListener("mousedown",(e)=>{
+
+            e.preventDefault();
+
+            this.dragging=true;
+
+            this.move(e.clientY);
+
+        });
+
+        document.addEventListener("mousemove",(e)=>{
+
+            if(!this.dragging) return;
+
+            this.move(e.clientY);
+
+        });
+
+        document.addEventListener("mouseup",()=>{
+
+            this.dragging=false;
+
+        });
+
+        window.addEventListener("resize",()=>{
+
+            this.readCSS();
+            this.updateThumb();
+
+        });
+
+    }
+
+    move(mouseY){
+
+        const rect=this.el.getBoundingClientRect();
+
+        let percent=((mouseY-rect.top)/rect.height)*100;
+
+        percent=Math.max(
+            this.start,
+            Math.min(percent,this.end)
+        );
+
+        this.value=
+            (percent-this.start)/this.length;
+
+        this.updateThumb();
+
+        if(this.onChange){
+
+            this.onChange(this.value);
+
+        }
+
+    }
+
+    updateThumb(){
+
+        const percent=
+
+            this.start+
+
+            this.length*this.value;
+
+        this.thumb.style.top=
+
+            percent+"%";
+
+    }
+
 }
 
-// 스크롤할 때
-textbox.addEventListener("scroll", updateScrollbar);
+/*==================================================
+    CREATE SLIDERS
+==================================================*/
 
-// 입력할 때
-textbox.addEventListener("input", updateScrollbar);
+const sliders={
 
-// 창 크기 변경
-window.addEventListener("resize", updateScrollbar);
+    epi:new CustomSlider("epi"),
 
-// 처음 로드
-window.addEventListener("load", updateScrollbar);
+    ppi:new CustomSlider("ppi"),
 
-// hover 시 나타남
-document.querySelector(".textbox-wrapper").addEventListener("mouseenter", () => {
-    if (textbox.scrollHeight > textbox.clientHeight) {
-        scrollbar.style.opacity = "1";
+    size:new CustomSlider("size"),
+
+    tracking:new CustomSlider("tracking"),
+
+    leading:new CustomSlider("leading")
+
+};
+
+/*----------------------------------------
+    DEFAULT SLIDER VALUE
+----------------------------------------*/
+
+sliders.size.value = 1.0;
+sliders.tracking.value = 0.18;
+sliders.leading.value = 0.30;
+sliders.epi.value = 1;
+sliders.ppi.value = 0.5; 
+
+/* 슬라이더 위치 갱신 */
+Object.values(sliders).forEach(slider=>{
+    slider.updateThumb();
+});
+
+
+/*==================================================
+    FONT ENGINE
+==================================================*/
+
+const textbox=document.querySelector(".textbox");
+const title=document.querySelector(".title");
+
+
+const EPI=[3,5,7,13,26];
+const PPI=[30,60,100];
+
+
+const SETTING={
+
+    fontSize:[16,120],
+
+    tracking:[-5,20],
+
+    leading:[0.8,2.2]
+
+};
+
+
+function map(value,min,max){
+
+    return min+(max-min)*value;
+
+}
+
+
+function currentFont(){
+
+    const epi=
+
+        EPI[
+            Math.round(
+                sliders.epi.value*(EPI.length-1)
+            )
+        ];
+
+    const ppi=
+
+        PPI[
+            Math.round(
+                sliders.ppi.value*(PPI.length-1)
+            )
+        ];
+
+    return `"${epi}EPI-${ppi}PPI"`;
+
+}
+
+
+/*----------------------------------------
+    APPLY FONT
+----------------------------------------*/
+
+function updateFont(){
+
+    const family=currentFont();
+
+
+    /* TITLE */
+
+    if(title){
+
+        title.style.fontFamily=family;
+
     }
+
+
+    /* TEXT */
+
+    textbox.style.fontFamily=family;
+
+    textbox.style.fontSize=
+
+        map(
+            sliders.size.value,
+            ...SETTING.fontSize
+        )+"px";
+
+
+    textbox.style.letterSpacing=
+
+        map(
+            sliders.tracking.value,
+            ...SETTING.tracking
+        )+"px";
+
+
+    textbox.style.lineHeight=
+
+        map(
+            sliders.leading.value,
+            ...SETTING.leading
+        );
+
+
+    alignBottom();
+
+}
+
+
+/*----------------------------------------
+    CONNECT SLIDER
+----------------------------------------*/
+
+Object.values(sliders).forEach(slider=>{
+
+    slider.onChange=()=>{
+
+        updateFont();
+
+    };
+
 });
 
-// hover 해제 시 사라짐
-document.querySelector(".textbox-wrapper").addEventListener("mouseleave", () => {
-    scrollbar.style.opacity = "0";
+
+
+
+/*==================================================
+    TEXT ENGINE
+==================================================*/
+
+const wrapper=document.querySelector(".textbox-wrapper");
+
+
+/*----------------------------------------
+    DEFAULT TEXT
+----------------------------------------*/
+
+if(textbox.innerHTML.trim()===""){
+
+    textbox.innerHTML="Weave your Type";
+
+}
+
+/*----------------------------------------
+    ALIGN BOTTOM
+----------------------------------------*/
+
+function alignBottom(){
+
+    const diff=
+
+        wrapper.clientHeight-
+
+        textbox.scrollHeight;
+
+    textbox.style.bottom=
+
+        Math.min(0,diff)+"px";
+
+}
+
+
+/*----------------------------------------
+    CARET
+----------------------------------------*/
+
+function focusInput(){
+
+     textbox.focus();
+
+}
+
+
+/*----------------------------------------
+    INPUT
+----------------------------------------*/
+
+textbox.addEventListener("input",()=>{
+
+    alignBottom();
+
 });
+
+/*----------------------------------------
+    CLICK
+----------------------------------------*/
+
+wrapper.addEventListener("mousedown",()=>{
+
+    focusInput();
+
+});
+
+
+/*----------------------------------------
+    WINDOW
+----------------------------------------*/
+
+window.addEventListener("resize",()=>{
+
+    alignBottom();
+
+});
+
+
+/*----------------------------------------
+    INITIALIZE
+----------------------------------------*/
+
+function initialize(){
+
+    updateFont();
+
+	alignBottom();
+
+	focusInput();
+
+}
+
+window.addEventListener("load",initialize);
 </script>
 
 </body>
